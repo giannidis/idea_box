@@ -4,6 +4,8 @@ class Idea < ActiveRecord::Base
 	has_many :qualifications
 	belongs_to :user
 
+	acts_as_taggable
+
 	
 	accepts_nested_attributes_for :requirements, reject_if: proc { |attributes| attributes['name'].blank? },
 		allow_destroy: true

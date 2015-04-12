@@ -3,6 +3,16 @@ class IdeasController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	def index
 		@idea = Idea.all.order("created_at DESC")
+
+		if params[:tag].present? 
+      @idea = Idea.tagged_with(params[:tag])
+    else
+      @idea = Idea.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
+      respond_to do |format|
+	      format.html  #index.html.erb
+	      format.json { render json: @ideas }
+      end 
+    end  
 	end
 
 	
@@ -43,7 +53,7 @@ class IdeasController < ApplicationController
 	private
 
 	def idea_params
-		params.require(:idea).permit(:title, :description, :image, requirements_attributes: [:id, :name, :_destroy], qualifications_attributes: [:id, :add, :_destroy])
+		params.require(:idea).permit(:title, :description, :image, :tag_list, requirements_attributes: [:id, :name, :_destroy], qualifications_attributes: [:id, :add, :_destroy])
 	end
 
 	def find_idea
