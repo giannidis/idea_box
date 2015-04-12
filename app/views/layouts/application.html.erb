@@ -14,14 +14,26 @@
       </div>
     </div>
   </nav>
-  <ul class="nav navbar-nav navbar-right">
-    <li>
-      <%= link_to "Add Idea", new_idea_path %>
-    </li>
-    <li>
-      <%= link_to "Sign Out", root_path %>
-    </li>
-  </ul>
+  <% if user_signed_in? %>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "New Idea", new_idea_path %>
+      </li>
+      <li>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  <% else %>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Sign In", new_user_session_path %>
+      </li>
+    </ul>
+  <% end %>
+
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: "alert" %>

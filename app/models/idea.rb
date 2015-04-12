@@ -2,6 +2,8 @@ class Idea < ActiveRecord::Base
 
 	has_many :requirements
 	has_many :qualifications
+	belongs_to :user
+
 	
 	accepts_nested_attributes_for :requirements, reject_if: proc { |attributes| attributes['name'].blank? },
 		allow_destroy: true

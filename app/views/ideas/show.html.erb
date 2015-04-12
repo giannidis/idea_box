@@ -12,10 +12,16 @@
           <p class="description">
             <%= @idea.description %>
           </p>
+          <p>
+            Submitted by
+            <%= @idea.user.email %>
+          </p>
         </div>
       </div>
     </div>
   </div>
+</div>
+
   <div class="row">
     <div class="col-md-6">
       <div id="requirements">
@@ -45,8 +51,11 @@
   <div class="row">
     <div class="col-md-12">
       <%= link_to "Back", root_path, class: "btn btn-default" %>
-      <%= link_to "Edit", edit_idea_path, class: "btn btn-default" %>
-      <%= link_to "Delete", idea_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+      <% if user_signed_in? %>
+
+        <%= link_to "Edit", edit_idea_path, class: "btn btn-default" %>
+        <%= link_to "Delete", idea_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+      <% end %>
     </div>
   </div>
 </div>
