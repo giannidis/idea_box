@@ -6,6 +6,15 @@
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
 
+     <div><%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %></div>
+
+    <div><%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %> </div>
+    <div><%= f.check_box :is_female, {}, false %> <%= f.label :is_female, "Male" %></div>
+
+    <div><%= f.label :birthday %><br />
+        <%= f.date_select :birthday %></div>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
