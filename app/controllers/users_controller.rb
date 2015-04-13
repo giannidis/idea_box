@@ -11,6 +11,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+
+		if params[:tag].present? 
+	    @user = User.tagged_with(params[:tag])
+	  end  
+
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

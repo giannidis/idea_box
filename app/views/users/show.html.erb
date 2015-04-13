@@ -16,6 +16,18 @@
             	<%= @user.birthday %>
             <h3>Short Bio:</h3>
             	<%= @user.user_description %>
+
+						<h3>All users:</h3>
+            	<%= link_to "Show ",users_path %>
+
+            <h3>My Skills:</h3>
+              <% @user.tags.any? %>
+                <% @user.tags.each do |tag| %>
+                  <span class="label label-teal">
+                <%= link_to tag.name, tag_path(tag.name) %>  
+                </span>
+          <% end %>
+
           	
         </div>
     </div>
