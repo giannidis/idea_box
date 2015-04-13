@@ -1,0 +1,30 @@
+<div class="main_content">
+  <div class="row" id="recipe_top">
+    <div class="col-md-8">
+      
+        <div class="container">
+          <h1>
+            <%= @user.name %> 
+          </h1>
+            <h3>Commitment:</h3>
+            	<%= @user.commitment %>
+
+            <h3>Website:</h3>
+            	<%= @user.website %>
+
+            <h3>Birthday:</h3>
+            	<%= @user.birthday %>
+            <h3>Short Bio:</h3>
+            	<%= @user.user_description %>
+          	
+        </div>
+    </div>
+  </div>
+</div>
+
+    <div class="row">
+    <div class="col-md-12">
+      <%= link_to "Back", root_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
