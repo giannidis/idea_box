@@ -16,6 +16,7 @@
             Submitted by
             <%= @idea.user.email %>
           </p>
+          <p>More ideas with this technology:</p>
           <% @idea.tags.any? %>
             <% @idea.tags.each do |tag| %>
             <span class="label label-teal">
