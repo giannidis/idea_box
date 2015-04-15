@@ -20,14 +20,7 @@
   <p>mini description - ("airbnb for parking" etc) max 80 chars</p>
   
 
-    <div class="input-row">
-      <%= f.label :tags %>
-      <%= f.text_field :tag_list %>
-   </div>
-  <div class="input-row">
-    <%= f.label :category %>
-    <%= f.text_field :category_list %>
-  </div>
+
 
     <% @idea.tag_types.each do |tag| %>
   <div class="form-group">
