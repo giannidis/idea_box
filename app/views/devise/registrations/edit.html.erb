@@ -24,10 +24,14 @@
         <div><%= f.label :user_description %><br />
         <%= f.text_field :user_description %></div>
 
+      <% @user.tag_types.each do |tag| %>
         <div class="form-group">
-          <%= f.label :tags, "Tags (separated by commas)" %>
-          <%= f.text_field :tag_list, class: "form-control" %>
+          <strong><%= f.label tag.to_s.titleize %></strong><br />
+          <% tag_sym = "#{tag.to_s.singularize}_list".to_sym %>
+          <% tag_list = "#{tag.to_s.singularize}_list" %>
+          <%= f.text_field tag_sym, value: @user.send(tag_list).to_s, :placeholder => "Comma-separated list of #{tag.to_s}", class: 'form-control' %>
         </div>
+      <% end %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -41,6 +45,12 @@
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
+<% end %>
+
+  <%= simple_form_for @user, html: { multipart: true } do |f| %>
+
+
+
 <% end %>
 
 <h3>Cancel my account</h3>
