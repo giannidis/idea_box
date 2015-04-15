@@ -5,6 +5,7 @@ class Idea < ActiveRecord::Base
 	belongs_to :user
 
 	acts_as_taggable
+	acts_as_taggable_on :category
 
 	
 	accepts_nested_attributes_for :requirements, reject_if: proc { |attributes| attributes['name'].blank? },
