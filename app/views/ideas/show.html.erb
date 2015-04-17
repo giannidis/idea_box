@@ -37,6 +37,7 @@
           <% @idea.requirements.each do |requirement| %>
             <li>
               <%= requirement.name %>
+              <%= link_to "Apply for this", @idea, class: "btn btn-primary" %>
             </li>
           <% end %>
         </ul>

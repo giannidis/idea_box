@@ -10,7 +10,7 @@
             	<%= @user.commitment %>
 
             <h3>Website:</h3>
-            	<%= @user.website %>
+              <%=link_to @user.website, "http://#{@user.website}"%>
 
             <h3>Birthday:</h3>
             	<%= @user.birthday %>
